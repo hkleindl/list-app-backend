@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     @users = User.all
 
     render json: @users
+    # reference on how to limit/include specific json keys
+    # render json: @users, only: [:id, :username], include: :lists
   end
 
   # GET /users/1
