@@ -3,9 +3,14 @@ class Api::V1::ListsController < ApplicationController
 
   # GET /lists
   def index
-    @lists = List.all
-
-    render json: @lists
+    if logged_in?
+      @lists = current_user.lists
+      render json: ListSerializer.new(@lists)
+    else
+      render json: {
+        notice: "You must be logged in"
+      }
+    end
   end
 
   # GET /lists/1
