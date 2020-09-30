@@ -50,6 +50,6 @@ class Api::V1::UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.fetch(:user, {}).permit(:id, :username)
+      params.fetch(:user, {}).permit(:id, :username, :password, :password_confirmation)
     end
 end
